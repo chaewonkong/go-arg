@@ -101,7 +101,7 @@ func (h *heap) popMin() (element, bool) {
 	return root, true
 }
 
-func topNFreqWithBucket(nums []int, k int) int {
+func topNFreqWithBucket(nums []int, k int) []int {
 	cntMap := make(map[int]int)
 
 	// check frequency and make deduplication

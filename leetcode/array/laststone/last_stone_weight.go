@@ -19,6 +19,7 @@ func lastStoneWeight(stones []int) int {
 		res, _ := h.popMax()
 		return res
 	}
+
 	return 0
 }
 
