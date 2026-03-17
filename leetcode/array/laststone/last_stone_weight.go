@@ -6,25 +6,20 @@ func lastStoneWeight(stones []int) int {
 		h.insert(stone)
 	}
 
-	var last int
-	for {
-		y, ok := h.popMax()
-		if !ok {
-			break // has next
-		}
-		x, ok := h.popMax()
-		if !ok {
-			last = y
-			break
+	for h.len() > 1 {
+		y, _ := h.popMax()
+		x, _ := h.popMax()
+
+		if y != x {
+			h.insert(y - x)
 		}
 
-		if x == y {
-			continue
-		}
-		h.insert(y - x)
 	}
-
-	return last
+	if h.len() == 1 {
+		res, _ := h.popMax()
+		return res
+	}
+	return 0
 }
 
 type heap struct {
@@ -35,6 +30,10 @@ func newHeap() *heap {
 	return &heap{
 		stones: []int{0},
 	}
+}
+
+func (h *heap) len() int {
+	return len(h.stones) - 1
 }
 
 func (h *heap) insert(v int) {
@@ -48,7 +47,7 @@ func (h *heap) insert(v int) {
 	for parent >= 1 && h.stones[parent] < h.stones[cur] {
 		h.stones[parent], h.stones[cur] = h.stones[cur], h.stones[parent]
 		cur = parent
-		parent = parent / 2
+		parent = cur / 2
 	}
 }
 
@@ -63,7 +62,7 @@ func (h *heap) popMax() (int, bool) {
 	h.stones[1] = h.stones[last]
 	h.stones = h.stones[:last]
 
-	last = last - 1
+	last = len(h.stones) - 1
 	i := 1
 	for i <= last {
 		swap := i
