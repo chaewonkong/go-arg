@@ -1,6 +1,8 @@
 // Package redundantconn
 //
 //   - https://leetcode.com/problems/redundant-connection/description/
+//   - Time Complexity: O(n · α(n)) ≈ O(n)
+//   - Space Complexity: O(n)
 package redundantconn
 
 /* Union Find
@@ -20,7 +22,7 @@ func findRedundantConnection(edges [][]int) []int {
 	var find func(x int) int
 	find = func(x int) int {
 		if parent[x] != x {
-			parent[x] = find(parent[x])
+			parent[x] = find(parent[x]) // return find(parent[x]) -> path compression
 		}
 		return parent[x]
 	}
