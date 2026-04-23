@@ -31,7 +31,7 @@ func accountsMerge(accounts [][]string) [][]string {
 		name := acc[0]
 		for _, email := range acc[1:] {
 			if _, ok := parent[email]; !ok {
-				parent[email] = email // 자기 자신이 root
+				parent[email] = email // 자기 자신이 root: 초기화
 			}
 			emailToName[email] = name
 
