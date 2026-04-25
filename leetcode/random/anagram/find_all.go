@@ -1,6 +1,8 @@
 // Package anagram
 //
 //   - https://leetcode.com/problems/find-all-anagrams-in-a-string/
+//   - Time: O(n)
+//   - Space: O(1)
 package anagram
 
 func findAnagrams(s string, p string) []int {
