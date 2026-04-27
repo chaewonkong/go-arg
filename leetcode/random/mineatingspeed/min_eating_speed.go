@@ -3,6 +3,7 @@
 //   - https://leetcode.com/problems/koko-eating-bananas/description/
 //   - time: O(NlogM); M = max(piles)
 //   - space: O(1)
+//   - 패턴: 이진탐색으로 최소/최대 찾기. 찾으면 return하지 않고 계속 찾음.
 package mineatingspeed
 
 import "slices"
